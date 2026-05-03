@@ -3,28 +3,30 @@
 ## Steps to Complete:
 
 ### 1. Setup Git (if not already)
-- [ ] Check git status
-- [ ] git init (if needed)
-- [ ] Create .gitignore
-- [ ] Create README.md
+- [x] Check git status ✓
+- [x] git init (already exists)
+- [x] Create .gitignore ✓
+- [x] Create README.md ✓
 - [ ] git add .
-- [ ] git commit -m "Initial commit: Product landing page"
+- [ ] git commit -m "Add .gitignore, README.md, update TODO"
+- [x] Pushed root TODO update
 
-### 2. Connect to Existing Repo
-- [ ] git remote add origin https://github.com/SolenSarkar/Product-launcher.git
-- [ ] git branch -M main
-- [ ] git push -u origin main
+### 2. Connect to Existing Repo (skip, already connected)
 
 ### 3. Prepare for GitHub Pages
-- [ ] Rename landing-page/ to docs/
-  - mv landing-page/* docs/
-  - rmdir landing-page
-- [ ] Update paths in docs/index.html if needed (check relative links)
+- [x] Rename landing-page/ to docs/ ✓
+  - mkdir docs ✓
+  - move landing-page\\* docs\\ ✓
+  - rmdir landing-page ✓
+- [x] Verify docs/index.html loads locally ✓ (all relative paths work: pure-styles.css, utilities.css, script.js)
+- [x] Update paths if needed ✓ (no changes needed)
 
-### 4. Enable Pages
-- [ ] Via GitHub web: Settings > Pages > Source: Deploy from branch main /docs folder
-- [ ] Or gh pages enable
+### 4. Enable Pages & Push
+- [ ] git add .
+- [ ] git commit -m "Move to docs/ for GitHub Pages"
+- [ ] git push
+- [ ] Set Pages source to main:/docs in GitHub Settings
 
 ### 5. Verify
-- [ ] Check https://solensarkar.github.io/Product-launcher/
-- [ ] Test live site
+- [ ] Visit https://solensarkar.github.io/Product-launcher/
+- [ ] Test theme toggle, responsiveness live
