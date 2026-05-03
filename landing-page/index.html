@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LaunchAI - Revolutionize Your Product Launches</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="stylesheet" href="pure-styles.css">
+    <link rel="stylesheet" href="pure-styles-complete.css" disabled>
+    <link rel="stylesheet" href="utilities.css">
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav id="navbar" class="navbar">
+        <div class="container nav-content">
+            <div class="flex items-center">
+                <h1 class="logo">LaunchAI</h1>
+            </div>
+            <div class="nav-links">
+                <a href="#home" class="transition">Home</a>
+                <a href="#features" class="transition">Features</a>
+                <div class="services-dropdown">
+                    <a href="#" class="transition flex items-center gap-1">Services <i class="fas fa-chevron-down text-sm transition-transform group-hover:rotate-180"></i></a>
+                    <!-- Services Dropdown -->
+                    <div class="dropdown-content">
+                        <a href="#web-dev" class="dropdown-item rounded-t-2xl">Web Development</a>
+                        <a href="#mobile" class="dropdown-item">Mobile Apps</a>
+                        <a href="#ai" class="dropdown-item">AI/ML Solutions</a>
+                        <a href="#consulting" class="dropdown-item rounded-b-2xl">Consulting</a>
+                    </div>
+                </div>
+                <a href="#cta" class="transition">Contact</a>
+                <button id="theme-toggle" class="theme-btn transition" title="Toggle theme" aria-label="Toggle light/dark mode">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
+            <div>
+                <button id="mobile-menu-btn" class="mobile-toggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="mobile-menu hidden">
+            <a href="#home" class="mobile-link" onclick="toggleMobileDropdown(event)">Home</a>
+            <a href="#features" class="mobile-link" onclick="toggleMobileDropdown(event)">Features</a>
+            <div>
+                <a href="#" class="mobile-link font-semibold flex justify-between items-center" onclick="toggleMobileDropdown(event, this)">Services <i class="fas fa-chevron-down text-sm transition-transform" id="mobile-services-icon"></i></a>
+                <div id="mobile-services-dropdown" class="hidden pl-8 border-l-2 border-blue-400/50">
+                    <a href="#web-dev" class="block py-1 px-2 hover:text-blue-400 text-sm">Web Development</a>
+                    <a href="#mobile" class="block py-1 px-2 hover:text-blue-400 text-sm">Mobile Apps</a>
+                    <a href="#ai" class="block py-1 px-2 hover:text-blue-400 text-sm">AI/ML Solutions</a>
+                    <a href="#consulting" class="block py-1 px-2 hover:text-blue-400 text-sm">Consulting</a>
+                </div>
+            </div>
+            <a href="#cta" class="mobile-link">Contact</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="gradient-hero container">
+            <h1 class="hero-title">
+                Revolutionize Your<br>
+                <span class="highlight">Product Launches</span>
+            </h1>
+            <p class="hero-text opacity-90">
+                LaunchAI is the ultimate AI-powered platform that helps startups and creators launch products with viral marketing strategies, automated campaigns, and data-driven insights.
+            </p>
+            <div class="cta-buttons">
+                <a href="#cta" class="btn btn-primary">Get Started Free</a>
+                <a href="#features" class="btn btn-secondary">Watch Demo</a>
+            </div>
+        </section>
+
+    <!-- Features Section -->
+    <section id="features" class="section-pad">
+        <div class="container">
+            <div class="text-center mb-20">
+                <h2 class="section-title">Powerful Features</h2>
+                <p class="section-subtitle">Everything you need to launch like a pro</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card gradient-card">
+                    <div class="icon-circle icon-rocket">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <h3 class="card-title">AI Launch Strategy</h3>
+                    <p class="card-text">Get personalized launch strategies powered by AI analysis of successful campaigns.</p>
+                    <i class="fas fa-arrow-right arrow-right"></i>
+                </div>
+                <div class="feature-card gradient-card">
+                    <div class="icon-circle icon-chart">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3 class="card-title">Analytics Dashboard</h3>
+                    <p class="card-text">Real-time analytics and insights to optimize your launch performance.</p>
+                    <i class="fas fa-arrow-right arrow-right"></i>
+                </div>
+                <div class="feature-card gradient-card">
+                    <div class="icon-circle icon-users">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3 class="card-title">Community Builder</h3>
+                    <p class="card-text">Build your waitlist and engaged community before launch day.</p>
+                    <i class="fas fa-arrow-right arrow-right"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section-pad">
+        <h2 class="section-title">Launch with Confidence</h2>
+        <div class="container about-grid">
+            <div>
+                <p class="text-xl opacity-90 mb-8">We've helped 500+ startups achieve 10x better launch results with our proven AI methodology. Join the future of product launches.</p>
+                <div class="space-y-4 mb-12">
+                    <div class="stats-item">
+                        <div class="check-icon">
+                            <i class="fas fa-check"></i>
+                        </div>
+                        <span>500+ Successful Launches</span>
+                    </div>
+                    <div class="stats-item">
+                        <div class="check-icon">
+                            <i class="fas fa-check"></i>
+                        </div>
+                        <span>99.9% Uptime</span>
+                    </div>
+                    <div class="stats-item">
+                        <div class="check-icon">
+                            <i class="fas fa-check"></i>
+                        </div>
+                        <span>24/7 Support</span>
+                    </div>
+                </div>
+            </div>
+            <div class="demo-panel">
+                <div class="text-center">
+                    <i class="fas fa-chart-bar text-6xl text-white/50 mb-4"></i>
+                    <p class="demo-text">10x Growth</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="section-pad">
+        <div class="container">
+            <div class="text-center mb-20">
+                <h2 class="section-title">What Our Users Say</h2>
+                <p class="section-subtitle">Don't just take our word for it</p>
+            </div>
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <div class="flex items-center mb-6">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face" alt="Sarah Chen" class="user-avatar">
+                        <div class="user-info">
+                            <h4>Sarah Chen</h4>
+                            <p class="opacity-75">@sarah_builds</p>
+                        </div>
+                    </div>
+                    <p class="testimonial-text">"LaunchAI transformed our launch from good to viral. 50k signups in 24 hours!"</p>
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="flex items-center mb-6">
+                        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=face" alt="Mike Johnson" class="user-avatar">
+                        <div class="user-info">
+                            <h4>Mike Johnson</h4>
+                            <p class="opacity-75">@mike_dev</p>
+                        </div>
+                    </div>
+                    <p class="testimonial-text">"The best launch platform I've used. Analytics are incredible."</p>
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="flex items-center mb-6">
+                        <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?w=100&h=100&fit=crop&crop=face" alt="Emily Davis" class="user-avatar">
+                        <div class="user-info">
+                            <h4>Emily Davis</h4>
+                            <p class="opacity-75">@emily_design</p>
+                        </div>
+                    </div>
+                    <p class="testimonial-text">"Easy to use and incredibly effective. Highly recommend!"</p>
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section id="cta" class="cta-section cta-container">
+            <h2 class="section-title">Ready to Launch?</h2>
+            <p class="text-xl mb-12 opacity-90">Join 500+ creators who trusted LaunchAI for their success</p>
+            <div class="flex flex-col sm:flex-row gap-6 justify-center items-center">
+                <a href="#" class="btn btn-primary shadow-xl">Start Free Trial</a>
+                <a href="#features" class="btn btn-secondary">Learn More</a>
+            </div>
+            <p class="mt-8 text-lg opacity-75">No credit card required. Cancel anytime.</p>
+        </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container text-center">
+            <h3 class="footer-logo">LaunchAI</h3>
+            <p class="footer-text">&copy; 2025 LaunchAI. All rights reserved.</p>
+            <div class="social-icons">
+                <a href="#" class="social-btn"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="social-btn"><i class="fab fa-linkedin"></i></a>
+                <a href="#" class="social-btn"><i class="fab fa-facebook"></i></a>
+                <a href="#" class="social-btn"><i class="fab fa-github"></i></a>
+            </div>
+            <div class="footer-links">
+                <a href="/privacy">Privacy Policy</a> | 
+                <a href="/terms">Terms</a> | 
+                <a href="/contact">Contact</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
