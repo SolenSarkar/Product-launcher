@@ -22,10 +22,10 @@
 - [x] Update paths if needed ✓ (no changes needed)
 
 ### 4. Enable Pages & Push
-- [ ] git add .
-- [ ] git commit -m "Move to docs/ for GitHub Pages"
-- [ ] git push
-- [ ] Set Pages source to main:/docs in GitHub Settings
+- [x] git add . ✓
+- [x] git commit -m "Move to docs/ for GitHub Pages" ✓
+- [x] git push ✓
+- [ ] Set Pages source to main:/docs in GitHub Settings (do in browser: repo Settings > Pages > Source: main/docs)
 
 ### 5. Verify
 - [ ] Visit https://solensarkar.github.io/Product-launcher/
