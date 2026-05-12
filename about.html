@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - LaunchAI</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="pure-styles.css">
+    <link rel="stylesheet" href="pure-styles-complete.css" disabled>
+    <link rel="stylesheet" href="utilities.css">
+</head>
+<body>
+
+    <nav id="navbar" class="navbar">
+        <div class="container nav-content">
+            <div class="flex items-center">
+                <h1 class="logo">LaunchAI</h1>
+            </div>
+            <div class="nav-links">
+                <a href="index.html" class="transition">Home</a>
+                <a href="about.html" class="transition">About</a>
+                <a href="features.html" class="transition">Features</a>
+
+                <div class="services-dropdown">
+                    <a href="#" class="transition flex items-center gap-1">Services <i class="fas fa-chevron-down text-sm transition-transform group-hover:rotate-180"></i></a>
+                    <div class="dropdown-content">
+                        <a href="#web-dev" class="dropdown-item rounded-t-2xl">Web Development</a>
+                        <a href="#mobile" class="dropdown-item">Mobile Apps</a>
+                        <a href="#ai" class="dropdown-item">AI/ML Solutions</a>
+                        <a href="#consulting" class="dropdown-item rounded-b-2xl">Consulting</a>
+                    </div>
+                </div>
+                <a href="contact.html" class="transition">Contact</a>
+                <button id="theme-toggle" class="theme-btn transition" title="Toggle theme" aria-label="Toggle light/dark mode">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
+            <div>
+                <button id="mobile-menu-btn" class="mobile-toggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+        <div id="mobile-menu" class="mobile-menu hidden">
+            <a href="index.html" class="mobile-link" onclick="toggleMobileDropdown(event)">Home</a>
+            <a href="about.html" class="mobile-link" onclick="toggleMobileDropdown(event)">About</a>
+            <a href="features.html" class="mobile-link" onclick="toggleMobileDropdown(event)">Features</a>
+
+            <div>
+                <a href="#" class="mobile-link font-semibold flex justify-between items-center" onclick="toggleMobileDropdown(event, this)">Services <i class="fas fa-chevron-down text-sm transition-transform" id="mobile-services-icon"></i></a>
+                <div id="mobile-services-dropdown" class="hidden pl-8 border-l-2 border-blue-400/50">
+                    <a href="#web-dev" class="block py-1 px-2 hover:text-blue-400 text-sm">Web Development</a>
+                    <a href="#mobile" class="block py-1 px-2 hover:text-blue-400 text-sm">Mobile Apps</a>
+                    <a href="#ai" class="block py-1 px-2 hover:text-blue-400 text-sm">AI/ML Solutions</a>
+                    <a href="#consulting" class="block py-1 px-2 hover:text-blue-400 text-sm">Consulting</a>
+                </div>
+            </div>
+            <a href="contact.html" class="mobile-link">Contact</a>
+        </div>
+    </nav>
+
+    <section id="about" class="section-pad">
+        <div class="container">
+            <div class="text-center mb-20">
+                <h2 class="section-title">Launch with Confidence</h2>
+                <p class="section-subtitle">A calmer way to go from idea → impact</p>
+                <p class="section-subtitle mt-6">
+                    LaunchAI combines AI-driven planning with performance insights, so you’re not guessing what to do next—you’re acting on what’s likely to work.
+                    Our workflow turns your goals into launch steps, then tracks results to help you adjust before momentum fades.
+                </p>
+            </div>
+
+            <div class="container about-grid">
+                <div>
+                    <p class="text-xl opacity-90 mb-8">
+                        Backed by a proven AI methodology, LaunchAI helps teams launch smarter—aligning messaging, timing, and channels with the data that matters.
+                        Join 500+ startups improving launch outcomes with faster decision-making and stronger execution.
+                    </p>
+                    <div class="space-y-4 mb-12">
+                        <div class="stats-item">
+                            <div class="check-icon"><i class="fas fa-check"></i></div>
+                            <span>500+ Successful Launches</span>
+                        </div>
+                        <div class="stats-item">
+                            <div class="check-icon"><i class="fas fa-check"></i></div>
+                            <span>99.9% Uptime</span>
+                        </div>
+                        <div class="stats-item">
+                            <div class="check-icon"><i class="fas fa-check"></i></div>
+                            <span>24/7 Support</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="demo-panel">
+                    <div class="text-center">
+                        <i class="fas fa-chart-bar text-6xl text-white/50 mb-4"></i>
+                        <p class="demo-text">10x Growth</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container text-center">
+            <h3 class="footer-logo">LaunchAI</h3>
+            <p class="footer-text">&copy; 2025 LaunchAI. All rights reserved.</p>
+            <div class="social-icons">
+                <a href="#" class="social-btn"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="social-btn"><i class="fab fa-linkedin"></i></a>
+                <a href="#" class="social-btn"><i class="fab fa-facebook"></i></a>
+                <a href="#" class="social-btn"><i class="fab fa-github"></i></a>
+            </div>
+            <div class="footer-links">
+                <a href="/privacy">Privacy Policy</a> | 
+                <a href="/terms">Terms</a> | 
+                <a href="/contact">Contact</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
+

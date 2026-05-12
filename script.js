@@ -1,5 +1,5 @@
 // Smooth scrolling for navigation links (including dropdown)
-document.querySelectorAll('a[href^=\"#\"]').forEach(anchor => {
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         e.preventDefault();
         // Close mobile menu and dropdowns on link click
@@ -99,20 +99,37 @@ document.querySelectorAll('.animate-fade-in, .animate-fade-in-delay, .animate-fa
 // });
 
 // Form handling for CTA (demo)
-document.querySelectorAll('a[href=\"#cta\"]').forEach(link => {
+document.querySelectorAll('a[href="#cta"]').forEach(link => {
     link.addEventListener('click', (e) => {
-        // Simulate form submission
-        const ctaBtn = document.querySelector('.btn-primary');
-        if (ctaBtn) {
-            ctaBtn.textContent = 'Thank you! 🚀';
-            ctaBtn.style.animation = 'pulse 1s infinite';
+        // Keep legacy behavior (changes button text) but don't override the contact submit button.
+        const primaryBtn = document.querySelector('#cta .btn-primary');
+        if (primaryBtn && primaryBtn.textContent !== 'Send Message') {
+            primaryBtn.textContent = 'Thank you! 🚀';
+            primaryBtn.style.animation = 'pulse 1s infinite';
             setTimeout(() => {
-                ctaBtn.textContent = 'Get Started Free';
-                ctaBtn.style.animation = '';
+                primaryBtn.textContent = 'Send Message';
+                primaryBtn.style.animation = '';
             }, 3000);
         }
     });
 });
+
+// Contact form handling (client-side demo)
+const contactForm = document.getElementById('contact-form');
+if (contactForm) {
+    contactForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        const status = document.getElementById('contact-form-status');
+        if (status) status.textContent = 'Sending...';
+
+        // Demo-only: no backend wired.
+        setTimeout(() => {
+            if (status) status.textContent = "Thanks! Your message has been received. We'll reply soon.";
+            contactForm.reset();
+        }, 800);
+    });
+}
 
 // Theme toggle functionality
 (function() {
@@ -139,7 +156,7 @@ document.querySelectorAll('a[href=\"#cta\"]').forEach(link => {
         body.classList.remove('light');
         icon.className = 'fas fa-moon';
         localStorage.setItem('theme', 'dark');
-        
+
         // Only apply light if explicitly saved previously
         const saved = localStorage.getItem('theme');
         if (saved === 'light') {

@@ -1,32 +1,10 @@
-# GitHub Pages Deployment Plan for Product-launcher
+# Product-launcher - TODO
 
-## Steps to Complete:
+## Contact page separation
+- [x] Read `index.html`, `contact.html`, `about.html`, `features.html`, and `script.js` to understand current layout.
+- [ ] Create/update a separate “new contact” section/page (contact.html) while keeping homepage contact section unchanged.
+- [ ] Add any additional “necessity” sections/forms you want to the separate contact page.
+- [ ] Ensure navbar/footer links correctly point to `contact.html`.
+- [ ] Verify `script.js` still submits the contact form on the new contact page.
+- [ ] Run a quick local check (open in browser) to confirm rendering.
 
-### 1. Setup Git (if not already)
-- [x] Check git status ✓
-- [x] git init (already exists)
-- [x] Create .gitignore ✓
-- [x] Create README.md ✓
-- [ ] git add .
-- [ ] git commit -m "Add .gitignore, README.md, update TODO"
-- [x] Pushed root TODO update
-
-### 2. Connect to Existing Repo (skip, already connected)
-
-### 3. Prepare for GitHub Pages
-- [x] Rename landing-page/ to docs/ ✓
-  - mkdir docs ✓
-  - move landing-page\\* docs\\ ✓
-  - rmdir landing-page ✓
-- [x] Verify docs/index.html loads locally ✓ (all relative paths work: pure-styles.css, utilities.css, script.js)
-- [x] Update paths if needed ✓ (no changes needed)
-
-### 4. Enable Pages & Push
-- [x] git add . ✓
-- [x] git commit -m "Move to docs/ for GitHub Pages" ✓
-- [x] git push ✓
-- [ ] Set Pages source to main:/docs in GitHub Settings (do in browser: repo Settings > Pages > Source: main/docs)
-
-### 5. Verify
-- [ ] Visit https://solensarkar.github.io/Product-launcher/
-- [ ] Test theme toggle, responsiveness live
