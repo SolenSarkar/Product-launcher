@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - LaunchAI</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="pure-styles.css">
+    <link rel="stylesheet" href="pure-styles-complete.css" disabled>
+    <link rel="stylesheet" href="utilities.css">
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav id="navbar" class="navbar">
+        <div class="container nav-content">
+            <div class="flex items-center">
+                <h1 class="logo">LaunchAI</h1>
+            </div>
+            <div class="nav-links">
+                <a href="index.html" class="transition">Home</a>
+                <a href="about.html" class="transition">About</a>
+                <a href="features.html" class="transition">Features</a>
+
+                <div class="services-dropdown">
+                    <a href="#" class="transition flex items-center gap-1">Services <i class="fas fa-chevron-down text-sm transition-transform group-hover:rotate-180"></i></a>
+                    <div class="dropdown-content">
+                        <a href="#web-dev" class="dropdown-item rounded-t-2xl">Web Development</a>
+                        <a href="#mobile" class="dropdown-item">Mobile Apps</a>
+                        <a href="#ai" class="dropdown-item">AI/ML Solutions</a>
+                        <a href="#consulting" class="dropdown-item rounded-b-2xl">Consulting</a>
+                    </div>
+                </div>
+
+                <a href="contact.html" class="transition">Contact</a>
+                <button id="theme-toggle" class="theme-btn transition" title="Toggle theme" aria-label="Toggle light/dark mode">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
+            <div>
+                <button id="mobile-menu-btn" class="mobile-toggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="mobile-menu hidden">
+            <a href="index.html" class="mobile-link" onclick="toggleMobileDropdown(event)">Home</a>
+            <a href="about.html" class="mobile-link" onclick="toggleMobileDropdown(event)">About</a>
+            <a href="features.html" class="mobile-link" onclick="toggleMobileDropdown(event)">Features</a>
+
+            <div>
+                <a href="#" class="mobile-link font-semibold flex justify-between items-center" onclick="toggleMobileDropdown(event, this)">Services <i class="fas fa-chevron-down text-sm transition-transform" id="mobile-services-icon"></i></a>
+                <div id="mobile-services-dropdown" class="hidden pl-8 border-l-2 border-blue-400/50">
+                    <a href="#web-dev" class="block py-1 px-2 hover:text-blue-400 text-sm">Web Development</a>
+                    <a href="#mobile" class="block py-1 px-2 hover:text-blue-400 text-sm">Mobile Apps</a>
+                    <a href="#ai" class="block py-1 px-2 hover:text-blue-400 text-sm">AI/ML Solutions</a>
+                    <a href="#consulting" class="block py-1 px-2 hover:text-blue-400 text-sm">Consulting</a>
+                </div>
+            </div>
+
+            <a href="contact.html" class="mobile-link">Contact</a>
+        </div>
+    </nav>
+
+    <!-- Contact Page -->
+    <section id="contact" class="section-pad">
+        <div class="container">
+            <div class="text-center mb-20">
+                <h2 class="section-title">Contact LaunchAI</h2>
+                <p class="section-subtitle">Questions, partnerships, or product feedback — send us a message.</p>
+            </div>
+
+            <div class="grid-2" style="align-items:start;">
+                <!-- Left: Contact details -->
+                <div>
+                    <div class="feature-card gradient-card" style="padding: 2.25rem;">
+                        <div class="flex items-center" style="gap: 1rem; margin-bottom: 1.25rem;">
+                            <div class="icon-circle" style="width:4.5rem;height:4.5rem;border-radius: 1rem;background: linear-gradient(to right, #3b82f6, #8b5cf6);margin:0;">
+                                <i class="fas fa-envelope" aria-hidden="true" style="font-size:1.25rem;"></i>
+                            </div>
+                            <div>
+                                <h3 class="card-title" style="margin:0 0 0.35rem 0;">We reply fast</h3>
+                                <p class="card-text" style="margin:0;">Typical response time: within 1 business day.</p>
+                            </div>
+                        </div>
+
+                        <div class="space-y-4" style="margin-top: 1.25rem;">
+                            <div class="stats-item" style="margin:0;">
+                                <div class="check-icon" style="background: linear-gradient(to right, #10b981, #34d399); width:2.75rem; height:2.75rem;">
+                                    <i class="fas fa-phone" aria-hidden="true" style="font-size:0.95rem;"></i>
+                                </div>
+                                <span style="font-size:1.05rem; opacity:0.95;">+1 (555) 012-3456</span>
+                            </div>
+                            <div class="stats-item" style="margin:0;">
+                                <div class="check-icon" style="background: linear-gradient(to right, #8b5cf6, #ec4899); width:2.75rem; height:2.75rem;">
+                                    <i class="fas fa-location-dot" aria-hidden="true" style="font-size:0.95rem;"></i>
+                                </div>
+                                <span style="font-size:1.05rem; opacity:0.95;">Remote-first • Global team</span>
+                            </div>
+                            <div class="stats-item" style="margin:0;">
+                                <div class="check-icon" style="background: linear-gradient(to right, #fbbf24, #f18125); width:2.75rem; height:2.75rem;">
+                                    <i class="fas fa-paper-plane" aria-hidden="true" style="font-size:0.95rem;"></i>
+                                </div>
+                                <span style="font-size:1.05rem; opacity:0.95;">support@launchai.example</span>
+                            </div>
+                        </div>
+
+                        <div style="margin-top: 2rem;">
+                            <p class="card-text" style="font-size:1.05rem; opacity:0.9; margin:0;">
+                                Prefer social? Use the buttons in the footer — we’re active and happy to help.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right: Form -->
+                <div>
+                    <div class="feature-card gradient-card" style="padding: 2.25rem;">
+                        <h3 class="card-title" style="margin-bottom: 0.75rem;">Send a message</h3>
+                        <p class="card-text" style="margin-bottom: 1.5rem;">Tell us what you’re building and we’ll get back to you.</p>
+
+                        <form id="contact-form">
+                            <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                                <div>
+                                    <label for="contact-name" style="display:block; margin-bottom: 0.5rem; opacity:0.85;">Name</label>
+                                    <input id="contact-name" name="name" type="text" required placeholder="Your name" style="width:100%; padding: 0.9rem 1rem; border-radius: 0.75rem; border: 1px solid rgba(255,255,255,0.15); background: rgba(17,24,39,0.35); color:#fff; outline:none;" />
+                                </div>
+                                <div>
+                                    <label for="contact-email" style="display:block; margin-bottom: 0.5rem; opacity:0.85;">Email</label>
+                                    <input id="contact-email" name="email" type="email" required placeholder="you@company.com" style="width:100%; padding: 0.9rem 1rem; border-radius: 0.75rem; border: 1px solid rgba(255,255,255,0.15); background: rgba(17,24,39,0.35); color:#fff; outline:none;" />
+                                </div>
+                            </div>
+
+                            <div style="margin-top: 1rem;">
+                                <label for="contact-topic" style="display:block; margin-bottom: 0.5rem; opacity:0.85;">Topic</label>
+                                <select id="contact-topic" name="topic" style="width:100%; padding: 0.9rem 1rem; border-radius: 0.75rem; border: 1px solid rgba(255,255,255,0.15); background: rgba(17,24,39,0.35); color:#fff; outline:none;">
+                                    <option value="demo">Request a demo</option>
+                                    <option value="pricing">Pricing & plans</option>
+                                    <option value="partnership">Partnership</option>
+                                    <option value="support">Support</option>
+                                    <option value="feedback">Product feedback</option>
+                                </select>
+                            </div>
+
+                            <div style="margin-top: 1rem;">
+                                <label for="contact-message" style="display:block; margin-bottom: 0.5rem; opacity:0.85;">Message</label>
+                                <textarea id="contact-message" name="message" required rows="6" placeholder="How can we help?" style="width:100%; padding: 0.9rem 1rem; border-radius: 0.75rem; border: 1px solid rgba(255,255,255,0.15); background: rgba(17,24,39,0.35); color:#fff; outline:none; resize: vertical;"></textarea>
+                            </div>
+
+                            <div style="margin-top: 1.75rem; display:flex; gap: 1rem; flex-direction: column;">
+                                <button type="submit" class="btn btn-primary" style="margin-top:0; width:100%; text-align:center;">Send Message</button>
+                                <p id="contact-form-status" style="margin:0; opacity:0.75; font-size:0.95rem; min-height:1.25rem;"></p>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container text-center">
+            <h3 class="footer-logo">LaunchAI</h3>
+            <p class="footer-text">&copy; 2025 LaunchAI. All rights reserved.</p>
+            <div class="social-icons">
+                <a href="#" class="social-btn"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="social-btn"><i class="fab fa-linkedin"></i></a>
+                <a href="#" class="social-btn"><i class="fab fa-facebook"></i></a>
+                <a href="#" class="social-btn"><i class="fab fa-github"></i></a>
+            </div>
+            <div class="footer-links">
+                <a href="/privacy">Privacy Policy</a> | 
+                <a href="/terms">Terms</a> | 
+                <a href="contact.html">Contact</a>
+
+
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
