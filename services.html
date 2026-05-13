@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services - LaunchAI</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="pure-styles.css">
+    <link rel="stylesheet" href="pure-styles-complete.css" disabled>
+    <link rel="stylesheet" href="utilities.css">
+</head>
+
+<body>
+    <nav id="navbar" class="navbar">
+        <div class="container nav-content">
+            <div class="flex items-center">
+                <h1 class="logo">LaunchAI</h1>
+            </div>
+            <div class="nav-links">
+                <a href="index.html" class="transition">Home</a>
+                <a href="about.html" class="transition">About</a>
+                <a href="features.html" class="transition">Features</a>
+
+                <div class="services-dropdown">
+                    <a href="services.html" class="transition flex items-center gap-1">Services <i
+                            class="fas fa-chevron-down text-sm transition-transform group-hover:rotate-180"></i></a>
+                    <!-- Services Dropdown -->
+                    <div class="dropdown-content">
+                        <a href="services.html#web-dev" class="dropdown-item rounded-t-2xl">Web Development</a>
+                        <a href="services.html#mobile" class="dropdown-item">Mobile Apps</a>
+                        <a href="services.html#ai" class="dropdown-item">AI/ML Solutions</a>
+                        <a href="services.html#consulting" class="dropdown-item rounded-b-2xl">Consulting</a>
+                    </div>
+                </div>
+
+                <a href="contact.html" class="transition">Contact</a>
+                <button id="theme-toggle" class="theme-btn transition" title="Toggle theme"
+                    aria-label="Toggle light/dark mode">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
+            <div>
+                <button id="mobile-menu-btn" class="mobile-toggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+
+        <div id="mobile-menu" class="mobile-menu hidden">
+            <a href="index.html" class="mobile-link" onclick="toggleMobileDropdown(event)">Home</a>
+            <a href="about.html" class="mobile-link" onclick="toggleMobileDropdown(event)">About</a>
+            <a href="features.html" class="mobile-link" onclick="toggleMobileDropdown(event)">Features</a>
+
+            <div>
+                <a href="services.html" class="mobile-link font-semibold flex justify-between items-center"
+                    onclick="toggleMobileDropdown(event, this)">Services <i
+                        class="fas fa-chevron-down text-sm transition-transform" id="mobile-services-icon"></i></a>
+                <div id="mobile-services-dropdown" class="hidden pl-8 border-l-2 border-blue-400/50">
+                    <a href="services.html#web-dev" class="block py-1 px-2 hover:text-blue-400 text-sm">Web
+                        Development</a>
+                    <a href="services.html#mobile" class="block py-1 px-2 hover:text-blue-400 text-sm">Mobile Apps</a>
+                    <a href="services.html#ai" class="block py-1 px-2 hover:text-blue-400 text-sm">AI/ML Solutions</a>
+                    <a href="services.html#consulting"
+                        class="block py-1 px-2 hover:text-blue-400 text-sm">Consulting</a>
+                </div>
+            </div>
+
+            <a href="contact.html" class="mobile-link">Contact</a>
+        </div>
+    </nav>
+
+    <section id="services" class="section-pad">
+        <div class="container">
+            <div class="text-center mb-20">
+                <h2 class="section-title">Services</h2>
+                <p class="section-subtitle">Pick what you need—then we build, deploy, and optimize it for launch
+                    success.</p>
+            </div>
+            <br><br><br><br>
+
+            <div class="grid-2" style="align-items:start;">
+                <div class="service-nav" style="position: sticky; top: 100px; align-self: start;">
+                    <div class="feature-card gradient-card" style="padding: 1.5rem;">
+                        <h3 class="card-title" style="margin-bottom: 0.75rem;">Jump to</h3>
+<div class="space-y-2">
+<a href="services.html#web-dev" class="transition service-nav-link" data-service-jump="true"
+style="display:block; padding:0.5rem 0.75rem; border-radius:0.75rem; background:rgba(255,255,255,0.06); color:rgba(255,255,255,0.95); text-decoration:none;">Web
+                                Development</a>
+<a href="services.html#mobile" class="transition" data-service-jump="true"
+                                style="display:block; padding:0.5rem 0.75rem; border-radius:0.75rem; background:rgba(255,255,255,0.06); color:rgba(255,255,255,0.95); text-decoration:none;">Mobile
+                                Apps</a>
+<a href="services.html#ai" class="transition" data-service-jump="true"
+                                style="display:block; padding:0.5rem 0.75rem; border-radius:0.75rem; background:rgba(255,255,255,0.06); color:rgba(255,255,255,0.95); text-decoration:none;">AI/ML
+                                Solutions</a>
+<a href="services.html#consulting" class="transition" data-service-jump="true"
+                                style="display:block; padding:0.5rem 0.75rem; border-radius:0.75rem; background:rgba(255,255,255,0.06); color:rgba(255,255,255,0.95); text-decoration:none;">Consulting</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <section id="web-dev" class="mb-16">
+                        <h3 class="section-title">Web Development</h3>
+                        <p class="section-subtitle mt-2">High-performance landing pages and product websites designed to
+                            convert.</p>
+                        <div class="features-grid" style="margin-top: 1.5rem;">
+                            <div class="feature-card gradient-card">
+                                <div class="icon-circle icon-rocket"><i class="fas fa-bolt"></i></div>
+                                <h4 class="card-title">Fast + SEO-ready</h4>
+                                <p class="card-text">Optimized for Core Web Vitals and discoverability.</p>
+                            </div>
+                            <div class="feature-card gradient-card">
+                                <div class="icon-circle icon-chart"><i class="fas fa-arrows-spin"></i></div>
+                                <h4 class="card-title">Conversion-focused UI</h4>
+                                <p class="card-text">Clear messaging, experimentation, and iterative improvements.</p>
+                            </div>
+                            <div class="feature-card gradient-card">
+                                <div class="icon-circle icon-users"><i class="fas fa-lock"></i></div>
+                                <h4 class="card-title">Secure by default</h4>
+                                <p class="card-text">Best practices baked into deployment and delivery.</p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section id="mobile" class="mb-16"><br><br><br><br><br>
+                        <h3 class="section-title">Mobile Apps</h3>
+                        <p class="section-subtitle mt-2">Engaging mobile experiences built for retention and growth.</p>
+                        <div class="features-grid" style="margin-top: 1.5rem;">
+                            <div class="feature-card gradient-card">
+                                <div class="icon-circle icon-rocket"><i class="fas fa-mobile-screen"></i></div>
+                                <h4 class="card-title">Native-feel experiences</h4>
+                                <p class="card-text">Smooth performance with thoughtful UX patterns.</p>
+                            </div>
+                            <div class="feature-card gradient-card">
+                                <div class="icon-circle icon-chart"><i class="fas fa-wave-square"></i></div>
+                                <h4 class="card-title">Analytics + events</h4>
+                                <p class="card-text">Track what matters and act on it quickly.</p>
+                            </div>
+                            <div class="feature-card gradient-card">
+                                <div class="icon-circle icon-users"><i class="fas fa-user-shield"></i></div>
+                                <h4 class="card-title">Privacy-aware</h4>
+                                <p class="card-text">Respect user trust with secure flows and consent handling.</p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section id="ai" class="mb-16"><br><br><br><br><br>
+                        <h3 class="section-title">AI/ML Solutions</h3>
+                        <p class="section-subtitle mt-2">AI that supports launch decisions—from strategy to
+                            optimization.</p>
+                        <div class="features-grid" style="margin-top: 1.5rem;">
+                            <div class="feature-card gradient-card">
+                                <div class="icon-circle icon-rocket"><i class="fas fa-brain"></i></div>
+                                <h4 class="card-title">Launch Intelligence</h4>
+                                <p class="card-text">Recommendations using performance data and benchmarks.</p>
+                            </div>
+                            <div class="feature-card gradient-card">
+                                <div class="icon-circle icon-chart"><i class="fas fa-robot"></i></div>
+                                <h4 class="card-title">Automation pipelines</h4>
+                                <p class="card-text">Automate campaigns and workflows with guardrails.</p>
+                            </div>
+                            <div class="feature-card gradient-card">
+                                <div class="icon-circle icon-users"><i class="fas fa-diagram-project"></i></div>
+                                <h4 class="card-title">Model monitoring</h4>
+                                <p class="card-text">Track drift, quality, and measurable business outcomes.</p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section id="consulting"><br><br><br><br><br>
+                        <h3 class="section-title">Consulting</h3>
+                        <p class="section-subtitle mt-2">Guidance to help teams ship with confidence and clarity.</p>
+                        <div class="features-grid" style="margin-top: 1.5rem;">
+                            <div class="feature-card gradient-card">
+                                <div class="icon-circle icon-rocket"><i class="fas fa-chess-queen"></i></div>
+                                <h4 class="card-title">Strategy workshops</h4>
+                                <p class="card-text">Align your messaging, audience, and channel plan.</p>
+                            </div>
+                            <div class="feature-card gradient-card">
+                                <div class="icon-circle icon-chart"><i class="fas fa-clipboard-check"></i></div>
+                                <h4 class="card-title">Launch audits</h4>
+                                <p class="card-text">Identify bottlenecks and prioritize the highest-impact changes.</p>
+                            </div>
+                            <div class="feature-card gradient-card">
+                                <div class="icon-circle icon-users"><i class="fas fa-people-group"></i></div>
+                                <h4 class="card-title">Execution support</h4>
+                                <p class="card-text">From planning to deployment—hands-on when you need it.</p>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container text-center">
+            <h3 class="footer-logo">LaunchAI</h3>
+            <p class="footer-text">&copy; 2025 LaunchAI. All rights reserved.</p>
+            <div class="social-icons">
+                <a href="#" class="social-btn"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="social-btn"><i class="fab fa-linkedin"></i></a>
+                <a href="#" class="social-btn"><i class="fab fa-facebook"></i></a>
+                <a href="#" class="social-btn"><i class="fab fa-github"></i></a>
+            </div>
+            <div class="footer-links">
+                <a href="/privacy">Privacy Policy</a> |
+                <a href="/terms">Terms</a> |
+                <a href="/contact">Contact</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
+

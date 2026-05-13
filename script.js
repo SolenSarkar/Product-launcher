@@ -139,7 +139,7 @@ if (contactForm) {
 
     if (!themeToggle || !icon) return;
 
-    function setTheme(isLight) {
+function setTheme(isLight) {
         if (isLight) {
             body.classList.add('light');
             icon.className = 'fas fa-sun';
@@ -149,7 +149,17 @@ if (contactForm) {
             icon.className = 'fas fa-moon';
             localStorage.setItem('theme', 'dark');
         }
+
+        // Immediately update "Jump to" section link colors on theme change (no hover needed)
+        document.querySelectorAll('a[data-service-jump="true"]').forEach(link => {
+            if (isLight) {
+                link.style.color = '#1e293b';
+            } else {
+                link.style.color = 'rgba(255,255,255,0.95)';
+            }
+        });
     }
+
 
     function initTheme() {
         // Default to dark theme to restore original look for about-to-footer sections

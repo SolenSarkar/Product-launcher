@@ -3,6 +3,7 @@
 /* Display & Flex - Existing + New */
 .flex { display: flex; }
 .block { display: block; }
+.hidden { display: none; }
 .items-center { align-items: center; }
 .items-start { align-items: flex-start; }
 .justify-center { justify-content: center; }
@@ -11,6 +12,7 @@
 .gap-1 { gap: 0.25rem; }
 .gap-6 { gap: 1.5rem; }
 .space-y-4 > * + * { margin-top: 1rem; }
+
 
 /* New: Grid */
 .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }

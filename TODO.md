@@ -1,11 +1,17 @@
-# Product-launcher - TODO
+## TODO - Services tab linkage fix
 
-## Contact page separation
-- [x] Read `index.html`, `contact.html`, `about.html`, `features.html`, and `script.js` to understand current layout.
-- [x] Create/update a separate “new contact” section/page (contact.html) while keeping homepage contact section unchanged.
+- [ ] Create `services.html`
+  - [ ] Add navbar + footer consistency with other pages
+  - [ ] Add Services sections with ids: `web-dev`, `mobile`, `ai`, `consulting`
 
-- [ ] Add any additional “necessity” sections/forms you want to the separate contact page.
-- [ ] Ensure navbar/footer links correctly point to `contact.html`.
-- [ ] Verify `script.js` still submits the contact form on the new contact page.
-- [ ] Run a quick local check (open in browser) to confirm rendering.
+- [ ] Update Services dropdown links on all pages:
+  - [ ] `index.html`
+  - [ ] `about.html`
+  - [ ] `features.html`
+  - [ ] `contact.html`
+  - Replace `href="#web-dev"` etc with `href="services.html#web-dev"` etc (both desktop + mobile dropdowns)
+
+- [ ] Sanity check
+  - [ ] Ensure no broken anchors remain for the dropdown
+  - [ ] Quick open in browser to confirm navigation
 
