@@ -1,17 +1,12 @@
-## TODO - Services tab linkage fix
+# TODO
 
-- [ ] Create `services.html`
-  - [ ] Add navbar + footer consistency with other pages
-  - [ ] Add Services sections with ids: `web-dev`, `mobile`, `ai`, `consulting`
+## Product-launcher: Contact submissions with validation + LocalStorage
 
-- [ ] Update Services dropdown links on all pages:
-  - [ ] `index.html`
-  - [ ] `about.html`
-  - [ ] `features.html`
-  - [ ] `contact.html`
-  - Replace `href="#web-dev"` etc with `href="services.html#web-dev"` etc (both desktop + mobile dropdowns)
+- [ ] Update `script.js` to validate contact form fields are not empty (trim) before accepting submit.
+- [x] Update `script.js` to persist valid submissions to `localStorage` under a key (e.g. `submissions`).
+- [x] Create `submissions.html` to display stored submissions.
+- [x] Update `script.js` to render submissions page content and implement a "Clear Submissions" action.
 
-- [ ] Sanity check
-  - [ ] Ensure no broken anchors remain for the dropdown
-  - [ ] Quick open in browser to confirm navigation
+- [ ] (Optional) Add navigation link to `submissions.html` from existing pages.
+- [ ] Test: submit contact form -> verify persisted entry appears on submissions page.
 

@@ -114,22 +114,184 @@ document.querySelectorAll('a[href="#cta"]').forEach(link => {
     });
 });
 
-// Contact form handling (client-side demo)
+// ------------------------------
+// Contact form: validation + LocalStorage persistence
+// ------------------------------
+const SUBMISSIONS_STORAGE_KEY = 'submissions';
+
+function safeParseSubmissions(raw) {
+    if (!raw) return [];
+    try {
+        const parsed = JSON.parse(raw);
+        return Array.isArray(parsed) ? parsed : [];
+    } catch {
+        return [];
+    }
+}
+
+function getTrimmedValue(inputEl) {
+    return (inputEl?.value ?? '').trim();
+}
+
+function buildSubmissionFromContactForm(formEl) {
+    const name = getTrimmedValue(document.getElementById('contact-name'));
+    const email = getTrimmedValue(document.getElementById('contact-email'));
+    const topic = getTrimmedValue(document.getElementById('contact-topic'));
+    const message = getTrimmedValue(document.getElementById('contact-message'));
+
+    const errors = [];
+    if (!name) errors.push('Name cannot be empty.');
+    if (!email) errors.push('Email cannot be empty.');
+    if (!topic) errors.push('Topic cannot be empty.');
+    if (!message) errors.push('Message cannot be empty.');
+
+    return {
+        name,
+        email,
+        topic,
+        message,
+        errors
+    };
+}
+
+function upsertSubmissionToStorage(submission) {
+    const existing = safeParseSubmissions(localStorage.getItem(SUBMISSIONS_STORAGE_KEY));
+    existing.push(submission);
+    localStorage.setItem(SUBMISSIONS_STORAGE_KEY, JSON.stringify(existing));
+}
+
+function validateNonEmptyAndShowErrors(formEl, statusEl) {
+    const built = buildSubmissionFromContactForm(formEl);
+    if (built.errors.length > 0) {
+        if (statusEl) {
+            statusEl.textContent = built.errors[0];
+            statusEl.style.color = '#f87171';
+        }
+        return null;
+    }
+    if (statusEl) {
+        statusEl.style.color = '';
+    }
+    return built;
+}
+
 const contactForm = document.getElementById('contact-form');
 if (contactForm) {
     contactForm.addEventListener('submit', (e) => {
         e.preventDefault();
 
         const status = document.getElementById('contact-form-status');
-        if (status) status.textContent = 'Sending...';
+        if (status) {
+            status.textContent = 'Submitting...';
+            status.style.color = '';
+        }
 
-        // Demo-only: no backend wired.
+        // Extra JS validation: prevent empty/whitespace-only values.
+        const validated = validateNonEmptyAndShowErrors(contactForm, status);
+        if (!validated) return;
+
+        // Demo-only: store locally (no backend).
+        const submission = {
+            id: (crypto?.randomUUID?.() ?? String(Date.now()) + '-' + Math.random().toString(16).slice(2)),
+            name: validated.name,
+            email: validated.email,
+            topic: validated.topic,
+            message: validated.message,
+            createdAt: new Date().toISOString()
+        };
+
         setTimeout(() => {
-            if (status) status.textContent = "Thanks! Your message has been received. We'll reply soon.";
+            upsertSubmissionToStorage(submission);
+
+            if (status) {
+                status.textContent = "Thanks! Your message has been saved. We'll reply soon.";
+                status.style.color = '';
+            }
             contactForm.reset();
-        }, 800);
+        }, 300);
     });
 }
+
+// ------------------------------
+// Submissions page renderer
+// ------------------------------
+function formatDate(iso) {
+    if (!iso) return '';
+    const d = new Date(iso);
+    if (Number.isNaN(d.getTime())) return iso;
+    return d.toLocaleString();
+}
+
+function renderSubmissionsPage() {
+    const tbody = document.getElementById('submissions-tbody');
+    const emptyEl = document.getElementById('submissions-empty');
+    const metaEl = document.getElementById('submissions-meta');
+    const clearBtn = document.getElementById('clear-submissions');
+    const clearStatus = document.getElementById('clear-status');
+
+    if (!tbody) return; // Not on submissions page
+
+    const submissions = safeParseSubmissions(localStorage.getItem(SUBMISSIONS_STORAGE_KEY));
+
+    if (metaEl) metaEl.textContent = `${submissions.length} submission${submissions.length === 1 ? '' : 's'} stored locally.`;
+
+    if (!submissions.length) {
+        if (emptyEl) emptyEl.style.display = 'block';
+        return;
+    }
+
+    if (emptyEl) emptyEl.style.display = 'none';
+
+    tbody.innerHTML = submissions
+        .slice()
+        .reverse()
+        .map((s) => {
+            const name = String(s?.name ?? '');
+            const email = String(s?.email ?? '');
+            const topic = String(s?.topic ?? '');
+            const message = String(s?.message ?? '');
+            const createdAt = formatDate(s?.createdAt);
+
+            return `
+                <tr>
+                    <td style="padding:0.75rem 0.5rem; border-top:1px solid rgba(255,255,255,0.08);">${escapeHtml(name)}</td>
+                    <td style="padding:0.75rem 0.5rem; border-top:1px solid rgba(255,255,255,0.08);">${escapeHtml(email)}</td>
+                    <td style="padding:0.75rem 0.5rem; border-top:1px solid rgba(255,255,255,0.08);">${escapeHtml(topic)}</td>
+                    <td style="padding:0.75rem 0.5rem; border-top:1px solid rgba(255,255,255,0.08);">${escapeHtml(message)}</td>
+                    <td style="padding:0.75rem 0.5rem; border-top:1px solid rgba(255,255,255,0.08); opacity:0.85;">${escapeHtml(createdAt)}</td>
+                </tr>
+            `;
+        })
+        .join('');
+
+    if (clearBtn) {
+        clearBtn.addEventListener('click', () => {
+            localStorage.removeItem(SUBMISSIONS_STORAGE_KEY);
+            if (clearStatus) {
+                clearStatus.textContent = 'Cleared.';
+            }
+            renderSubmissionsPage();
+        });
+    }
+}
+
+function escapeHtml(str) {
+    return String(str)
+        .replaceAll('&', '&amp;')
+        .replaceAll('<', '<')
+        .replaceAll('>', '>')
+        .replaceAll('"', '"')
+        .replaceAll("'", '&#039;');
+}
+
+
+// Render submissions after DOM is ready (safe for both pages)
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', renderSubmissionsPage);
+} else {
+    renderSubmissionsPage();
+}
+
 
 // Theme toggle functionality
 (function() {
