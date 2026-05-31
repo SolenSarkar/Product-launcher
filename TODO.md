@@ -1,12 +1,6 @@
 # TODO
 
-## Product-launcher: Contact submissions with validation + LocalStorage
-
-- [ ] Update `script.js` to validate contact form fields are not empty (trim) before accepting submit.
-- [x] Update `script.js` to persist valid submissions to `localStorage` under a key (e.g. `submissions`).
-- [x] Create `submissions.html` to display stored submissions.
-- [x] Update `script.js` to render submissions page content and implement a "Clear Submissions" action.
-
-- [ ] (Optional) Add navigation link to `submissions.html` from existing pages.
-- [x] Test: submit contact form -> verify persisted entry appears on submissions page.
+- [x] Inspect relevant HTML/JS to find any iframe/frame usage.
+- [ ] Provide repo-specific fix for `file://... treated as unique security origins` warning.
+- [ ] Verify fix by serving over HTTP and checking browser console.
 

@@ -174,7 +174,7 @@ function showContactPopup(message) {
                     <div>
 
                         <h3 class="contact-popup-title" id="contact-popup-title">Missing information</h3>
-                        <p class="contact-popup-subtitle">you need to fill all fields before sending</p>
+                        <p class="contact-popup-subtitle">Field cannot be left empty</p>
                     </div>
 
 
@@ -232,8 +232,13 @@ function validateNonEmptyAndShowErrors(formEl, statusEl) {
             statusEl.textContent = popupMsg;
             statusEl.style.color = '#f87171';
         }
-        showContactPopup(popupMsg);
+
+        // Show popup modal only once
+        if (!document.getElementById('contact-popup-modal')) {
+            showContactPopup(popupMsg);
+        }
         return null;
+
 
     }
     if (statusEl) {
@@ -241,6 +246,7 @@ function validateNonEmptyAndShowErrors(formEl, statusEl) {
     }
     return built;
 }
+
 
 const contactForm = document.getElementById('contact-form');
 if (contactForm) {
@@ -270,11 +276,57 @@ if (contactForm) {
         setTimeout(() => {
             upsertSubmissionToStorage(submission);
 
+            // Success popup: green "Thank you" with emoji + required message
+            if (!document.getElementById('contact-success-popup')) {
+                const modal = document.createElement('div');
+                modal.id = 'contact-success-popup';
+                modal.innerHTML = `
+                    <div class="contact-popup-overlay" aria-hidden="true"></div>
+                    <div class="contact-popup contact-popup--success" role="dialog" aria-modal="true" aria-labelledby="contact-success-title">
+                        <div class="contact-popup-header">
+                            <div class="contact-popup-glow contact-popup-glow--success" aria-hidden="true">
+                                <i class="fas fa-circle-check" aria-hidden="true"></i>
+                            </div>
+                            <div>
+                                <h3 class="contact-popup-title" id="contact-success-title">Thank you! ✅</h3>
+                                <p class="contact-popup-subtitle" id="contact-success-subtitle"> your message has been send successfully!</p>
+
+                            </div>
+                            <button type="button" class="contact-popup-close" id="contact-success-close" aria-label="Close">
+                                <i class="fas fa-xmark" aria-hidden="true"></i>
+                            </button>
+                        </div>
+                        <div class="contact-popup-actions">
+                            <button type="button" class="contact-popup-btn" id="contact-success-ok">OK</button>
+                        </div>
+                    </div>
+                `;
+                document.body.appendChild(modal);
+
+                const okBtn = modal.querySelector('#contact-success-ok');
+                const closeBtn = modal.querySelector('#contact-success-close');
+                const overlay = modal.querySelector('.contact-popup-overlay');
+
+                const closeModal = () => modal.remove();
+                okBtn?.addEventListener('click', closeModal);
+                closeBtn?.addEventListener('click', closeModal);
+                overlay?.addEventListener('click', closeModal);
+
+                document.addEventListener('keydown', (evt) => {
+                    if (evt.key === 'Escape') closeModal();
+                }, { once: true });
+            }
+
+            const successPopup = document.getElementById('contact-success-popup');
+            if (successPopup) successPopup.style.display = '';
+
+            // Also update inline status text (keeps existing UI behavior)
             if (status) {
                 status.textContent = "Thanks! Your message has been saved. We'll reply soon.";
                 status.style.color = '';
             }
             contactForm.reset();
+
         }, 300);
     });
 }
