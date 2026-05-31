@@ -8,5 +8,5 @@
 - [x] Update `script.js` to render submissions page content and implement a "Clear Submissions" action.
 
 - [ ] (Optional) Add navigation link to `submissions.html` from existing pages.
-- [ ] Test: submit contact form -> verify persisted entry appears on submissions page.
+- [x] Test: submit contact form -> verify persisted entry appears on submissions page.
 

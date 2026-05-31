@@ -160,14 +160,81 @@ function upsertSubmissionToStorage(submission) {
     localStorage.setItem(SUBMISSIONS_STORAGE_KEY, JSON.stringify(existing));
 }
 
+function showContactPopup(message) {
+    // Simple custom modal popup (no external deps)
+    let modal = document.getElementById('contact-popup-modal');
+    if (!modal) {
+        modal = document.createElement('div');
+        modal.id = 'contact-popup-modal';
+        modal.innerHTML = `
+            <div class="contact-popup-overlay" aria-hidden="true"></div>
+            <div class="contact-popup" role="dialog" aria-modal="true" aria-labelledby="contact-popup-title">
+                <div class="contact-popup-header">
+                    <div class="contact-popup-glow" aria-hidden="true"><i class="fas fa-triangle-exclamation"></i></div>
+                    <div>
+
+                        <h3 class="contact-popup-title" id="contact-popup-title">Missing information</h3>
+                        <p class="contact-popup-subtitle">you need to fill all fields before sending</p>
+                    </div>
+
+
+                    <button type="button" class="contact-popup-close" id="contact-popup-close" aria-label="Close">
+                        <i class="fas fa-xmark" aria-hidden="true"></i>
+                    </button>
+                </div>
+                <div class="contact-popup-body" id="contact-popup-message"></div>
+                <div class="contact-popup-actions">
+                    <button type="button" class="contact-popup-btn" id="contact-popup-ok">OK</button>
+                </div>
+            </div>
+            
+        `;
+        document.body.appendChild(modal);
+
+        const okBtn = modal.querySelector('#contact-popup-ok');
+        const closeBtn = modal.querySelector('#contact-popup-close');
+
+        const closeModal = () => {
+            modal?.remove();
+        };
+
+        okBtn.addEventListener('click', closeModal);
+        closeBtn?.addEventListener('click', closeModal);
+
+        // Close on overlay click
+        const overlay = modal.querySelector('.contact-popup-overlay');
+        overlay.addEventListener('click', () => {
+            modal?.remove();
+        });
+
+        // Basic focus
+        okBtn.focus();
+
+        // Esc to close
+        document.addEventListener('keydown', (evt) => {
+            if (evt.key === 'Escape') modal?.remove();
+        }, { once: true });
+    }
+
+    const msgEl = document.getElementById('contact-popup-message');
+    if (msgEl) msgEl.textContent = message;
+
+    // Ensure displayed
+    modal.style.display = '';
+}
+
+
 function validateNonEmptyAndShowErrors(formEl, statusEl) {
     const built = buildSubmissionFromContactForm(formEl);
     if (built.errors.length > 0) {
+        const popupMsg = 'you need to fill all fields before sending';
         if (statusEl) {
-            statusEl.textContent = built.errors[0];
+            statusEl.textContent = popupMsg;
             statusEl.style.color = '#f87171';
         }
+        showContactPopup(popupMsg);
         return null;
+
     }
     if (statusEl) {
         statusEl.style.color = '';
