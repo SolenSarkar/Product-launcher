@@ -174,7 +174,7 @@ function showContactPopup(message) {
                     <div>
 
                         <h3 class="contact-popup-title" id="contact-popup-title">Missing information</h3>
-                        
+                        <p class="contact-popup-subtitle">Field cannot be left empty</p>
                     </div>
 
 
